@@ -12,6 +12,8 @@ import { routes } from './routes';
 
 import { handleException } from './middlewares/exception.middleware';
 
+import { PrismaClient } from '@prisma/client'
+
 const app = express();
 
 app.use(express.json());
@@ -19,6 +21,14 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', async (request, response) => {
+    const prisma = new PrismaClient();
+    await prisma.school.create({
+        data: {
+            name: "Colégio Objetivo",
+            tag: "colegio-objetivo"
+        }
+    });
+    
     return response.json({
         message: 'Server make with artisan',
         version: '0.3.0',
