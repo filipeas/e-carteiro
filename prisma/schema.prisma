@@ -1,0 +1,52 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model School {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  tag       String
+  createdAt DateTime @default(now())
+
+  @@map("school")
+}
+
+model NewsLetter {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String
+  createdAt DateTime @default(now())
+
+  @@map("newsletter")
+}
+
+model SchoolClass {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  tag       String
+  createdAt DateTime @default(now())
+
+  @@map("school_class")
+}
+
+model Contact {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String
+  createdAt DateTime @default(now())
+
+  @@map("contact")
+}
+
+model Student {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  email       String
+  phoneNumber String
+  createdAt   DateTime @default(now())
+
+  @@map("student")
+}

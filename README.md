@@ -22,9 +22,13 @@
 - Enviar e-mails de um remetente para um ou mais destinatários de forma fácil.
 
 ## Requisitos Funcionais
-- Receber um remetemte e destinatário e vincular com uma empresa.
-- Enviar mensagem para um destinatário recebido.
-- Listar destinatários por empresa.
+- Receber lista de escolas.
+- Receber lista de newsletter de cada escola.
+- Receber lista de turmas de cada escola.
+- Receber lista de alunos de cada turma.
+- Cada contato enviado guardar remetente e destinatário.
+- Enviar multiplos e-mails para alunos.
+- Enviar multiplos e-mails para newsletter.
 - Visualização do progresso de envio (concluído / não concluído).
 
 ## Requisitos Não Funcionais
@@ -37,8 +41,3 @@
 - Ao receber empresa, se não existir ela deve ser criada.
 - Ao receber remetente e destinatário, vinculá-los com uma empresa informada.
 - Deve permitir vincular uma lista de e-mails a uma empresa.
-
-## Propostas futuras
-- Enviar e-mails para uma lista de e-mails, vinculando e-mails com tags e empresa;
-- Enviar mensagem de Whatsapp para uma lista de telefones, vinculando telefones com tags e empresa;
-- Enviar mensagem SMS para uma lista de telefones, vinculando telefones com tags e empresa;
