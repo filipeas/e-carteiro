@@ -13,7 +13,7 @@
         <img src="https://img.shields.io/badge/bib-Express-blue" />
     </a>
     <a href="" alt="Amazon SES">
-        <img src="https://img.shields.io/badge/bib-Amazon SES-red" />
+        <img src="https://img.shields.io/badge/server-Amazon SES-red" />
     </a>
 </p>
 
