@@ -8,16 +8,21 @@ datasource db {
 }
 
 model School {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  tag       String
-  createdAt DateTime @default(now())
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  tag         String
+  createdAt   DateTime      @default(now())
+  NewsLetter  NewsLetter[]
+  SchoolClass SchoolClass[]
+  Contact     Contact[]
 
   @@map("school")
 }
 
 model NewsLetter {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  schoolId  String
+  school    School   @relation(fields: [schoolId], references: [id])
   email     String
   createdAt DateTime @default(now())
 
@@ -25,16 +30,21 @@ model NewsLetter {
 }
 
 model SchoolClass {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  schoolId  String
+  school    School    @relation(fields: [schoolId], references: [id])
   name      String
   tag       String
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
+  Student   Student[]
 
   @@map("school_class")
 }
 
 model Contact {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  schoolId  String
+  school    School   @relation(fields: [schoolId], references: [id])
   email     String
   createdAt DateTime @default(now())
 
@@ -42,10 +52,12 @@ model Contact {
 }
 
 model Student {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  email       String
-  phoneNumber String
-  createdAt   DateTime @default(now())
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  schoolClassId String
+  schoolClass   SchoolClass @relation(fields: [schoolClassId], references: [id])
+  email         String
+  phoneNumber   String
+  createdAt     DateTime    @default(now())
 
   @@map("student")
 }
