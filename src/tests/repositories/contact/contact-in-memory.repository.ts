@@ -14,14 +14,28 @@ export class ContactInMemoryRepository implements IContactRepository{
   }
   
   async create(contact: Contact): Promise<void> {
-    throw new Error("Method not implemented.");
+    this.contacts.push(contact);
   }
   
   async save(contact: Contact): Promise<void> {
-    throw new Error("Method not implemented.");
+    const findedIndex = this.contacts.findIndex(item => item.id === contact.id);
+
+    if (findedIndex >= 0) {
+      this.contacts[findedIndex] = contact;
+    }
   }
   
   async delete(id: string, schoolId: string): Promise<void> {
-    throw new Error("Method not implemented.");
+    const tempContacts: Contact[] = [];
+
+    for (const contact of this.contacts) {
+      if (contact.id === id && contact.schoolId === schoolId) {
+        //
+      } else {
+        tempContacts.push(contact);
+      }
+    }
+
+    this.contacts = tempContacts;
   }
 }
