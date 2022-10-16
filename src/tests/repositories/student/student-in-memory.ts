@@ -9,19 +9,33 @@ export class StudentInMemoryRepository implements IStudentRepository{
     return this.students.filter(student => student.schoolClassId === schoolClassId);
   }
 
-  async findById(id: string, schoolId: string): AsyncMaybe<Student> {
-    return this.students.find(student => student.id === id && student.schoolId === schoolId);
+  async findById(id: string, schoolClassId: string): AsyncMaybe<Student> {
+    return this.students.find(student => student.id === id && student.schoolClassId === schoolClassId);
   }
 
-  async create(schoolClass: Student): Promise<void> {
-    throw new Error("Method not implemented.");
+  async create(student: Student): Promise<void> {
+    this.students.push(student);
   }
 
-  async save(schoolClass: Student): Promise<void> {
-    throw new Error("Method not implemented.");
+  async save(student: Student): Promise<void> {
+    const findedIndex = this.students.findIndex(item => item.id === student.id);
+
+    if (findedIndex >= 0) {
+      this.students[findedIndex] = student;
+    }
   }
 
-  async delete(id: string, schoolId: string): Promise<void> {
-    throw new Error("Method not implemented.");
+  async delete(id: string, schoolClassId: string): Promise<void> {
+    const tempStudents: Student[] = [];
+
+    for (const student of this.students) {
+      if (student.id === id && student.schoolClassId === schoolClassId) {
+        //
+      } else {
+        tempStudents.push(student);
+      }
+    }
+
+    this.students = tempStudents;
   }
 }

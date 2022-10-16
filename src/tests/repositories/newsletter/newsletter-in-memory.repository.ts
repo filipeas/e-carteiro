@@ -14,14 +14,28 @@ export class NewsletterInMemoryRepository implements INewsletterRepository{
   }
 
   async create(newsletter: Newsletter): Promise<void> {
-    throw new Error("Method not implemented.");
+    this.newsletters.push(newsletter);
   }
 
   async save(newsletter: Newsletter): Promise<void> {
-    throw new Error("Method not implemented.");
+    const findedIndex = this.newsletters.findIndex(item => item.id === newsletter.id);
+
+    if (findedIndex >= 0) {
+      this.newsletters[findedIndex] = newsletter;
+    }
   }
 
   async delete(id: string, schoolId: string): Promise<void> {
-    throw new Error("Method not implemented.");
+    const tempNewsletter: Newsletter[] = [];
+
+    for (const newsletter of this.newsletters) {
+      if (newsletter.id === id && newsletter.schoolId === schoolId) {
+        //
+      } else {
+        tempNewsletter.push(newsletter);
+      }
+    }
+
+    this.newsletters = tempNewsletter;
   }
 }

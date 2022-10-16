@@ -14,14 +14,28 @@ export class SchoolClassInMemoryRepository implements ISchoolClassRepository{
   }
 
   async create(schoolClass: SchoolClass): Promise<void> {
-    throw new Error("Method not implemented.");
+    this.schoolClasses.push(schoolClass);
   }
 
   async save(schoolClass: SchoolClass): Promise<void> {
-    throw new Error("Method not implemented.");
+    const findedIndex = this.schoolClasses.findIndex(item => item.id === schoolClass.id);
+
+    if (findedIndex >= 0) {
+      this.schoolClasses[findedIndex] = schoolClass;
+    }
   }
 
   async delete(id: string, schoolId: string): Promise<void> {
-    throw new Error("Method not implemented.");
+    const tempSchoolClasses: SchoolClass[] = [];
+
+    for (const schoolClass of this.schoolClasses) {
+      if (schoolClass.id === id && schoolClass.schoolId === schoolId) {
+        //
+      } else {
+        tempSchoolClasses.push(schoolClass);
+      }
+    }
+
+    this.schoolClasses = tempSchoolClasses;
   }
 }
