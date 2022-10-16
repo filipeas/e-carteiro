@@ -41,3 +41,7 @@
 - Ao receber empresa, se não existir ela deve ser criada.
 - Ao receber remetente e destinatário, vinculá-los com uma empresa informada.
 - Deve permitir vincular uma lista de e-mails a uma empresa.
+
+## Diagrama Entidade Relacionamento
+
+![v1](https://user-images.githubusercontent.com/23065588/196059025-8a8f5848-9c39-4648-b999-2c2039156fbb.png)
